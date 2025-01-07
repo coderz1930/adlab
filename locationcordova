@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Location Finder</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cordova/10.0.0/cordova.js"></script>
+        <script>
+            function getLocation() {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        alert('Latitude: ' + position.coords.latitude + ', Longitude: ' + position.coords.longitude);
+                    },
+                    function(error) {
+                        alert('Error: ' + error.message);
+                    }
+                );
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Get Current Location</h1>
+        <button onclick="getLocation()">Get Location</button>
+    </body>
+</html>
