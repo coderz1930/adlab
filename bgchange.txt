@@ -1,0 +1,69 @@
+package com.example.colorchanger;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private TextView textView;
+    private Button changeButton;
+    private boolean isDefault = true;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        textView = findViewById(R.id.textView);
+        changeButton = findViewById(R.id.changeButton);
+
+        changeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isDefault) {
+                    textView.setTextColor(Color.RED);
+                    textView.setTextSize(24);
+                    textView.setTypeface(null, android.graphics.Typeface.BOLD);
+                    getWindow().getDecorView().setBackgroundColor(Color.LTGRAY);
+                } else {
+                    textView.setTextColor(Color.BLACK);
+                    textView.setTextSize(18);
+                    textView.setTypeface(null, android.graphics.Typeface.NORMAL);
+                    getWindow().getDecorView().setBackgroundColor(Color.WHITE);
+                }
+                isDefault = !isDefault;
+            }
+        });
+    }
+}
+
+// XML Layout (res/layout/activity_main.xml)
+
+/*
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:text="Hello, World!"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/changeButton"
+        android:text="Change Style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+*/
